@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import Input from './components/Input';
 import Checkbox from './components/Checkbox';
+import Button from './components/Button';
 
 
 export default function App() {
@@ -15,7 +16,8 @@ export default function App() {
     const [items, setItems] = useState([]);
     const components = [
         <Input />,
-        <Checkbox />
+        <Checkbox />,
+        <Button />,
     ];
 
     function changeResizeble(key, isResizable) {

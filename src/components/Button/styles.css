@@ -1,0 +1,15 @@
+.button {
+  background-color: black;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 5px;
+  width: '100%';
+}
+
+.button-label {
+  background-color: transparent;
+  width: -webkit-fill-available;
+  border: 0px;
+  color: white;
+  text-align: center;
+}
