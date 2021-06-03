@@ -7,10 +7,38 @@
 .tools {
   width: 20%;
   height: 100%;
-  background-color: #ececec;
+  background-color: #ecececb8;
+  padding: 12px 20px;
 }
 
 .box {
   width: 80%;
   height: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.input {
+  padding: 12px;
+}
+
+.input-label {
+  background-color: transparent;
+  width: -webkit-fill-available;
+  border: 0px;
+}
+
+.input-field {
+  width: -webkit-fill-available;
+  margin-top: 8px;
+}
+
+.component-tool {
+  border: 1px dashed rgb(199 199 199);
+  border-radius: 5px;
+  margin: 12px;
 }

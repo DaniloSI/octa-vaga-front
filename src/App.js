@@ -4,12 +4,24 @@ import '../node_modules/react-grid-layout/css/styles.css';
 import './App.css';
 import { v4 as uuidv4 } from 'uuid';
 
+function InputComponent() {
+    return (
+        <div className="input">
+            <input type="text" className="input-label" placeholder="Type here an input label" /><br />
+            <input type="text" className="input-field" />
+        </div>
+    );
+}
+
 
 export default function App() {
     const [layout, setLayout] = useState([]);
     const [showBorderItems, setShowBorderItems] = useState(false);
     const [itemDrop, setItemDrop] = useState();
     const [items, setItems] = useState([]);
+    const components = [
+        <InputComponent />,
+    ];
 
     function changeResizeble(key, isResizable) {
         setLayout((old) => {
@@ -47,27 +59,31 @@ export default function App() {
         <div className="page">
             <div className="tools">
                 <h1>Components</h1>
-                <div
-                    className="droppable-element"
-                    draggable={true}
-                    unselectable="on"
-                    onDragStart={e => {
-                        e.dataTransfer.setData("text/plain", "");
-                        const newItem = {
-                            key: uuidv4(),
-                            value: <h1>Teste</h1>
-                        };
+                {components.map(component => (
+                    <div
+                        className="droppable-element"
+                        draggable={true}
+                        unselectable="on"
+                        onDragStart={e => {
+                            e.dataTransfer.setData("text/plain", "");
+                            const newItem = {
+                                key: uuidv4(),
+                                value: component
+                            };
 
-                        setItemDrop(newItem);
-                        setItems(
-                        {
-                            ...items,
-                            [newItem.key]: newItem.value,
-                        });
-                    }}
-                >
-                    Droppable Element (Drag me!)
-                </div>
+                            setItemDrop(newItem);
+                            setItems(
+                            {
+                                ...items,
+                                [newItem.key]: newItem.value,
+                            });
+                        }}
+                    >
+                        <div className="component-tool">
+                            {component}
+                        </div>
+                    </div>
+                ))}
             </div>
             <div className="box">
                 <GridLayout
@@ -90,7 +106,7 @@ export default function App() {
                             onMouseEnter={() => handleMouseEnter(l.i)}
                             onMouseLeave={() => handleMouseLeave(l.i)}
                             style={{
-                                border: l.isResizable || showBorderItems ? '1px dashed rgb(232, 232, 232)' : ''
+                                border: `1px dashed ${l.isResizable || showBorderItems ? 'rgb(232, 232, 232)' : 'transparent'}`
                             }}
                         >
                             {items[l.i]}
