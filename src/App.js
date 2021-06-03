@@ -4,14 +4,8 @@ import '../node_modules/react-grid-layout/css/styles.css';
 import './App.css';
 import { v4 as uuidv4 } from 'uuid';
 
-function InputComponent() {
-    return (
-        <div className="input">
-            <input type="text" className="input-label" placeholder="Type here an input label" /><br />
-            <input type="text" className="input-field" />
-        </div>
-    );
-}
+import Input from './components/Input';
+import Checkbox from './components/Checkbox';
 
 
 export default function App() {
@@ -20,7 +14,8 @@ export default function App() {
     const [itemDrop, setItemDrop] = useState();
     const [items, setItems] = useState([]);
     const components = [
-        <InputComponent />,
+        <Input />,
+        <Checkbox />
     ];
 
     function changeResizeble(key, isResizable) {
@@ -59,8 +54,9 @@ export default function App() {
         <div className="page">
             <div className="tools">
                 <h1>Components</h1>
-                {components.map(component => (
+                {components.map((component, index) => (
                     <div
+                        key={index}
                         className="droppable-element"
                         draggable={true}
                         unselectable="on"

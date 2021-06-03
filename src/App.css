@@ -22,21 +22,6 @@ select:focus {
   outline: none;
 }
 
-.input {
-  padding: 12px;
-}
-
-.input-label {
-  background-color: transparent;
-  width: -webkit-fill-available;
-  border: 0px;
-}
-
-.input-field {
-  width: -webkit-fill-available;
-  margin-top: 8px;
-}
-
 .component-tool {
   border: 1px dashed rgb(199 199 199);
   border-radius: 5px;
