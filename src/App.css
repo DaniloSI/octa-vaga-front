@@ -26,4 +26,15 @@ select:focus {
   border: 1px dashed rgb(199 199 199);
   border-radius: 5px;
   margin: 12px;
+  position: relative;
+}
+
+.component-box {
+  padding: 6px;
+}
+
+.delete-component {
+  position: absolute;
+  right: 6px;
+  cursor: pointer;
 }

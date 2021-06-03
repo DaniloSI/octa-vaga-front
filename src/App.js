@@ -51,6 +51,25 @@ export default function App() {
     function handleDrop(layout) {
         setLayout(layout.map(l => ({...l, isResizable: false})));
     }
+
+    function handleDragStart(e, component) {
+        e.dataTransfer.setData("text/plain", "");
+        const newItem = {
+            key: uuidv4(),
+            value: component
+        };
+
+        setItemDrop(newItem);
+        setItems(
+        {
+            ...items,
+            [newItem.key]: newItem.value,
+        });
+    }
+
+    function handleDeleteComponent(layout) {
+        setLayout(old => old.filter(l => l !== layout));
+    }
       
     return (
         <div className="page">
@@ -62,20 +81,7 @@ export default function App() {
                         className="droppable-element"
                         draggable={true}
                         unselectable="on"
-                        onDragStart={e => {
-                            e.dataTransfer.setData("text/plain", "");
-                            const newItem = {
-                                key: uuidv4(),
-                                value: component
-                            };
-
-                            setItemDrop(newItem);
-                            setItems(
-                            {
-                                ...items,
-                                [newItem.key]: newItem.value,
-                            });
-                        }}
+                        onDragStart={e => handleDragStart(e , component)}
                     >
                         <div className="component-tool">
                             {component}
@@ -104,10 +110,13 @@ export default function App() {
                             onMouseEnter={() => handleMouseEnter(l.i)}
                             onMouseLeave={() => handleMouseLeave(l.i)}
                             style={{
-                                border: `1px dashed ${l.isResizable || showBorderItems ? 'rgb(232, 232, 232)' : 'transparent'}`
+                                border: `1px dashed ${showBorderItems ? 'rgb(232, 232, 232)' : 'transparent'}`
                             }}
                         >
-                            {items[l.i]}
+                            {showBorderItems && <div className="delete-component" onClick={() => handleDeleteComponent(l)}>x</div>}
+                            <div className="component-box">
+                                {items[l.i]}
+                            </div>
                         </div>
                     ))}
                 </GridLayout>
