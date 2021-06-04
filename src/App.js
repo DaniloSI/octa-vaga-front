@@ -8,16 +8,18 @@ import Input from './components/Input';
 import Checkbox from './components/Checkbox';
 import Button from './components/Button';
 
+import { MdClear } from "react-icons/md";
+
 
 export default function App() {
     const [layout, setLayout] = useState([]);
     const [showBorderItems, setShowBorderItems] = useState(false);
     const [itemDrop, setItemDrop] = useState();
     const [items, setItems] = useState([]);
-    const components = [
-        <Input />,
-        <Checkbox />,
-        <Button />,
+    const componentsToolbox = [
+        { heightDefault: 3, component: <Input /> },
+        { heightDefault: 6, component: <Checkbox /> },
+        { heightDefault: 3, component: <Button /> },
     ];
 
     function changeResizeble(key, isResizable) {
@@ -52,11 +54,11 @@ export default function App() {
         setLayout(layout.map(l => ({...l, isResizable: false})));
     }
 
-    function handleDragStart(e, component) {
+    function handleDragStart(e, value) {
         e.dataTransfer.setData("text/plain", "");
         const newItem = {
             key: uuidv4(),
-            value: component
+            value
         };
 
         setItemDrop(newItem);
@@ -74,32 +76,34 @@ export default function App() {
     return (
         <div className="page">
             <div className="tools">
-                <h1>Components</h1>
-                {components.map((component, index) => (
-                    <div
-                        key={index}
-                        className="droppable-element"
-                        draggable={true}
-                        unselectable="on"
-                        onDragStart={e => handleDragStart(e , component)}
-                    >
-                        <div className="component-tool">
-                            {component}
+                <div className="tools-content">
+                    <h1>Toolbox</h1>
+                    {componentsToolbox.map((componentToolbox, index) => (
+                        <div
+                            key={index}
+                            className="droppable-element"
+                            draggable={true}
+                            unselectable="on"
+                            onDragStart={e => handleDragStart(e , componentToolbox)}
+                        >
+                            <div className="component-tool">
+                                {componentToolbox.component}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
             <div className="box">
                 <GridLayout
                     className="layout"
                     layout={layout}
                     cols={12}
-                    rowHeight={30}
+                    rowHeight={20}
                     width={1200}
                     onLayoutChange={setLayout}
                     isDroppable
                     onDrop={handleDrop}
-                    droppingItem={{ i: itemDrop?.key ?? '', w: 3, h: 2 }}
+                    droppingItem={{ i: itemDrop?.key ?? '', w: 3, h: itemDrop?.value.heightDefault ?? 2 }}
                     compactType={null}
                     isBounded
                     style={{height: '100%', width: '100%'}}
@@ -113,9 +117,13 @@ export default function App() {
                                 border: `1px dashed ${showBorderItems ? 'rgb(232, 232, 232)' : 'transparent'}`
                             }}
                         >
-                            {showBorderItems && <div className="delete-component" onClick={() => handleDeleteComponent(l)}>x</div>}
+                            {showBorderItems && (
+                                <div className="delete-component" onClick={() => handleDeleteComponent(l)}>
+                                    <MdClear color="grey" title="Delete" />
+                                </div>
+                            )}
                             <div className="component-box">
-                                {items[l.i]}
+                                {items[l.i].component}
                             </div>
                         </div>
                     ))}

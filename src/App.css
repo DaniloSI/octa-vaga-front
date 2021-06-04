@@ -8,6 +8,9 @@
   width: 20%;
   height: 100%;
   background-color: #ecececb8;
+}
+
+.tools-content {
   padding: 12px 20px;
 }
 
@@ -25,16 +28,23 @@ select:focus {
 .component-tool {
   border: 1px dashed rgb(199 199 199);
   border-radius: 5px;
-  margin: 12px;
+  margin: 12px 0px;
   position: relative;
 }
 
 .component-box {
   padding: 6px;
+  cursor: move;
 }
 
 .delete-component {
   position: absolute;
-  right: 6px;
+  right: 3px;
+  top: 2px;
   cursor: pointer;
+}
+
+h1 {
+  font-family: 'Mukta', sans-serif;
+  font-weight: 300;
 }
