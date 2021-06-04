@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/octa-vaga-front/static/css/main.ffa769f8.chunk.css",
+    "main.js": "/octa-vaga-front/static/js/main.8d41bf8f.chunk.js",
+    "main.js.map": "/octa-vaga-front/static/js/main.8d41bf8f.chunk.js.map",
+    "runtime-main.js": "/octa-vaga-front/static/js/runtime-main.a6502ec7.js",
+    "runtime-main.js.map": "/octa-vaga-front/static/js/runtime-main.a6502ec7.js.map",
+    "static/css/2.8a4e8fbd.chunk.css": "/octa-vaga-front/static/css/2.8a4e8fbd.chunk.css",
+    "static/js/2.a757cf0b.chunk.js": "/octa-vaga-front/static/js/2.a757cf0b.chunk.js",
+    "static/js/2.a757cf0b.chunk.js.map": "/octa-vaga-front/static/js/2.a757cf0b.chunk.js.map",
+    "index.html": "/octa-vaga-front/index.html",
+    "static/css/2.8a4e8fbd.chunk.css.map": "/octa-vaga-front/static/css/2.8a4e8fbd.chunk.css.map",
+    "static/css/main.ffa769f8.chunk.css.map": "/octa-vaga-front/static/css/main.ffa769f8.chunk.css.map",
+    "static/js/2.a757cf0b.chunk.js.LICENSE.txt": "/octa-vaga-front/static/js/2.a757cf0b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a6502ec7.js",
+    "static/css/2.8a4e8fbd.chunk.css",
+    "static/js/2.a757cf0b.chunk.js",
+    "static/css/main.ffa769f8.chunk.css",
+    "static/js/main.8d41bf8f.chunk.js"
+  ]
+}
